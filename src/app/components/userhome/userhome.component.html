@@ -1,4 +1,22 @@
-<div style="text-align: center; color: black;">
-<h1 *ngIf="user$ | async as user">Benvenuto/a, {{user.email}}</h1>
-<p>questa è la tua pagina personale.</p>
+<div style="text-align: left; color: black;">
+    <h1 *ngIf="user$ | async as user">Benvenuto/a, {{user.email}}</h1><br>
+    <div class="center margin-top" style="font-size: 42px; margin-bottom: 20px;">Lista di utenti presa da JsonPlaceHolder </div><br>
+</div>
+<div class="table-container">
+<table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>City</th>
+      <th>Zipcode</th>
+    </tr>
+    <tr *ngFor="let user of users; index as i">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.address.city }}</td>
+      <td>{{ user.address.zipcode }}</td>
+    </tr>
+  </table>
 </div>
