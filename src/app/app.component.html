@@ -1,0 +1,35 @@
+<html>
+<body style="background-color:LightGoldenRodYellow;">
+<mat-toolbar color="primary"><img src="favicon.ico" style="width:40px;height: 40px; margin-right:10px;">Login App
+ 
+ 
+  <div class="right-button">
+  <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
+    <span style="font-size: 16px; margin-right: 10px;">Ciao, {{user.email}}!</span>
+    <button mat-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+      Menu
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </ng-container>
+<ng-template #loginButton >
+  <button mat-button routerLink="" class="toolbar_button">
+    <mat-icon>home</mat-icon>
+    Home
+  </button>
+  <button mat-button routerLink="signup">
+    <mat-icon>app_registration</mat-icon>
+    Registrati
+  </button>
+</ng-template>
+</div>
+</mat-toolbar>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item routerLink=""><mat-icon>home</mat-icon>Home</button>
+  <button mat-menu-item routerLink="/userhome"><mat-icon>contact_page</mat-icon>Profilo</button>
+  <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
+</mat-menu>
+</body>
