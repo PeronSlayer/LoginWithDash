@@ -10,14 +10,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { UserhomeComponent } from './components/userhome/userhome.component';
-import { SuccessSignupComponent } from './components/success-signup/success-signup.component';
+import { HomeComponent } from './components/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -26,9 +26,8 @@ import { SuccessSignupComponent } from './components/success-signup/success-sign
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent,
     UserhomeComponent,
-    SuccessSignupComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +45,8 @@ import { SuccessSignupComponent } from './components/success-signup/success-sign
     MatInputModule,
     MatMenuModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    HttpClientModule,
     
   ],
   providers: [],

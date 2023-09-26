@@ -3,6 +3,7 @@ import { authState } from '@angular/fire/auth';
 import { NonNullableFormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import Swal from 'sweetalert2';
 
 
 
@@ -50,7 +51,11 @@ export class LoginComponent implements OnInit {
     this.auth
       .login(email, password)
       .subscribe(() => {
-        this.router.navigate(['/userhome']);
+        Swal.fire('Benvenuto', 'Hai effettuato il login correttamente!', 'success');
+        this.router.navigate(['/dashboard']);
       });
+
+    
+    
   }
 }
